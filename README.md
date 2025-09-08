@@ -14,7 +14,7 @@ A single-page web app where you search a **country** and see its **details** + *
 - **API key security**: `config.js` (gitignored), instructions below
 
 ## 🚀 Quick Start
-1. **Clone** this [repo] (https://github.com/diiipakkk-08/country-weather-app.git).
+1. **Clone** this repo (https://github.com/diiipakkk-08/country-weather-app.git).
 2. Create a file at the project root named **`config.js`** with:
    ```js
    export const OWM_API_KEY = "YOUR_OWM_API_KEY_HERE";
