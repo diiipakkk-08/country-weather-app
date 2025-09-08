@@ -29,3 +29,5 @@ config.js
 *.log
 .vscode/
 .idea/
+.env
+config.js
