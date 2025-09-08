@@ -20,3 +20,12 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Never commit secrets
+config.js
+
+# macOS / editors
+.DS_Store
+*.log
+.vscode/
+.idea/
