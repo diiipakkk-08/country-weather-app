@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Country & Capital Weather</title>
+  <meta name="description" content="Search a country to see its details and current weather in the capital." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Country <span class="amp">&</span> Capital Weather</h1>
+
+    <div class="controls">
+      <button id="geoBtn" class="btn secondary" aria-label="Use my location">
+        📍 Use My Location
+      </button>
+
+      <label class="switch" aria-label="Toggle dark mode">
+        <input id="themeToggle" type="checkbox" />
+        <span class="slider"></span>
+        <span class="switch-label">Dark</span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <section class="search-bar" role="search">
+      <label class="sr-only" for="countryInput">Country name</label>
+      <input id="countryInput" type="text" placeholder="Try: Japan, India, France…" autocomplete="off" />
+      <button id="searchBtn" class="btn primary" aria-label="Search country">Search</button>
+    </section>
+
+    <section id="status" class="status" aria-live="polite"></section>
+
+    <section id="results" class="card-container">
+      <!-- Country card will be injected here -->
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>
+      Data: <a href="https://restcountries.com" target="_blank" rel="noreferrer">REST Countries</a> &middot;
+      <a href="https://openweathermap.org" target="_blank" rel="noreferrer">OpenWeatherMap</a>
+    </small>
+  </footer>
+
+  <!-- Load key first, then app -->
+  <script type="module">
+    // Load config.js safely; show a friendly message if missing
+    import("./config.js")
+      .then(({ OWM_API_KEY }) => import("./app.js").then(m => m.startApp(OWM_API_KEY)))
+      .catch(() => {
+        const el = document.getElementById("status");
+        el.classList.add("error");
+        el.textContent = "Missing config.js with your OpenWeatherMap API key. See README.md.";
+      });
+  </script>
+</body>
+</html>
